@@ -13,10 +13,12 @@ import {SafeAreaView, View} from 'react-native';
 import {SceneMap, TabView} from 'react-native-tab-view';
 import ListPost from './src/components/ListPost';
 import Home from './src/components/Home';
+import Calculate from './src/components/Calculate';
 
 const renderScene = SceneMap({
   first: Home,
   second: ListPost,
+  third: Calculate,
 });
 
 const App = () => {
@@ -24,6 +26,7 @@ const App = () => {
   const [routes] = React.useState([
     {key: 'first', title: 'ListPost'},
     {key: 'second', title: 'Empty page'},
+    {key: 'third', title: 'calculate'},
   ]);
 
   return (

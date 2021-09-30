@@ -5,10 +5,12 @@ import CardInformation from './CardInformation';
 import MenuList from './MenuList';
 import TradeHistory from './TradeHistory';
 
+const headerTitle = 'Chi tiết đầu tư';
+
 const Home: FC = () => {
   return (
     <View>
-      <Header />
+      <Header title={headerTitle} />
       <CardInformation />
       <MenuList />
       <TradeHistory />
