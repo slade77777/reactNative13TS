@@ -35,22 +35,22 @@ const Calculate: FC = () => {
       <Text style={{textAlign: 'center', fontWeight: 'bold', fontSize: 20}}>
         Nhập 3 cạnh để tính chu vi tứ giác
       </Text>
-      <CustomTextInput
-        title={'Cạnh 1'}
-        changeText={(val: string) => saveEdgeAndCalculateArea(val, 1)}
-      />
-      <CustomTextInput
-        title={'Cạnh 2'}
-        changeText={(val: string) => saveEdgeAndCalculateArea(val, 2)}
-      />
-      <CustomTextInput
-        title={'Cạnh 3'}
-        changeText={(val: string) => saveEdgeAndCalculateArea(val, 3)}
-      />
-      <CustomTextInput
-        title={'Cạnh 4'}
-        changeText={(val: string) => saveEdgeAndCalculateArea(val, 4)}
-      />
+      {/*<CustomTextInput*/}
+      {/*  title={'Cạnh 1'}*/}
+      {/*  changeText={(val: string) => saveEdgeAndCalculateArea(val, 1)}*/}
+      {/*/>*/}
+      {/*<CustomTextInput*/}
+      {/*  title={'Cạnh 2'}*/}
+      {/*  changeText={(val: string) => saveEdgeAndCalculateArea(val, 2)}*/}
+      {/*/>*/}
+      {/*<CustomTextInput*/}
+      {/*  title={'Cạnh 3'}*/}
+      {/*  changeText={(val: string) => saveEdgeAndCalculateArea(val, 3)}*/}
+      {/*/>*/}
+      {/*<CustomTextInput*/}
+      {/*  title={'Cạnh 4'}*/}
+      {/*  changeText={(val: string) => saveEdgeAndCalculateArea(val, 4)}*/}
+      {/*/>*/}
       <Text>độ dài cạnh 1: {edge1}</Text>
       <Text>độ dài cạnh 2: {edge2}</Text>
       <Text>độ dài cạnh 3: {edge3}</Text>

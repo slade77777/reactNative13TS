@@ -92,10 +92,10 @@ const ListPost = () => {
 
   return (
     <>
-      <CustomTextInput
-        title={'tìm kiếm:'}
-        changeText={(val: string) => searchRecords(val)}
-      />
+      {/*<CustomTextInput*/}
+      {/*  title={'tìm kiếm:'}*/}
+      {/*  changeText={(val: string) => searchRecords(val)}*/}
+      {/*/>*/}
       <FlatList
         data={searchText ? listData : Data}
         renderItem={renderItem}
