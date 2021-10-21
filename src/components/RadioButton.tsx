@@ -12,8 +12,9 @@ const RadioButton = ({
 }) => {
   return (
     <View style={{margin: 20, flexDirection: 'row'}}>
-      {options.map(option => (
+      {options.map((option, index) => (
         <TouchableOpacity
+          key={index}
           style={{flexDirection: 'row', marginLeft: 30}}
           onPress={() => onChange(option)}>
           <Text>{option}</Text>

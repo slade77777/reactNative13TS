@@ -1,15 +1,25 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import {useRoute} from '@react-navigation/native';
+import {View, Text, TouchableOpacity} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {AnswerContext} from '../Navigation';
 
 const QuestionResult = () => {
-  const route = useRoute();
+  const navigation = useNavigation();
   return (
-    <View style={{flex: 1}}>
-      <Text>Đáp án câu 1: {route.params?.answer1}</Text>
-      <Text>Đáp án câu 2: {route.params?.answer2}</Text>
-      <Text>Đáp án câu 3: {route.params?.answer3}</Text>
-    </View>
+    <AnswerContext.Consumer>
+      {value => {
+        return (
+          <View style={{flex: 1}}>
+            <TouchableOpacity onPress={() => navigation.popToTop()}>
+              <Text style={{color: 'blue'}}>Quay lại từ đầu</Text>
+            </TouchableOpacity>
+            <Text>Đáp án câu 1: {value.answers.answer1}</Text>
+            <Text>Đáp án câu 2: {value.answers.answer2}</Text>
+            <Text>Đáp án câu 3: {value.answers.answer3}</Text>
+          </View>
+        );
+      }}
+    </AnswerContext.Consumer>
   );
 };
 

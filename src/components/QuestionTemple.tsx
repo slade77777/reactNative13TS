@@ -5,11 +5,9 @@ import {useNavigation} from '@react-navigation/native';
 const QuestionTemple = ({
   children,
   nextScreen,
-  answer,
 }: {
   children: ReactNode;
   nextScreen: string;
-  answer: any;
 }) => {
   const navigation = useNavigation();
   return (
@@ -23,7 +21,7 @@ const QuestionTemple = ({
       <TouchableOpacity
         style={{backgroundColor: 'blue', padding: 10}}
         //@ts-ignore
-        onPress={() => navigation.navigate(nextScreen, {...answer})}>
+        onPress={() => navigation.navigate(nextScreen)}>
         <Text style={{color: 'white', textAlign: 'center'}}>Tiếp tục</Text>
       </TouchableOpacity>
     </View>

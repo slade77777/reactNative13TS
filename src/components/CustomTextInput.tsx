@@ -12,6 +12,7 @@ const CustomTextInput: FC<{
       <TextInput
         onChangeText={text => changeText(text)}
         placeholder="00"
+        value={value}
         style={{
           borderWidth: 0.5,
           borderColor: 'grey',
