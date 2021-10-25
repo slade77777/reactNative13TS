@@ -9,6 +9,8 @@ import Question3 from './screens/Question3';
 import QuestionResult from './screens/QuestionResult';
 import Login from './screens/Login';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {Provider} from 'react-redux';
+import stores from './redux/store';
 
 const Stack = createNativeStackNavigator();
 const initialAnswers = {
@@ -41,28 +43,30 @@ const Navigation = () => {
 
   return (
     <NavigationContainer>
-      <AnswerContext.Provider value={{answers, saveAnswer}}>
-        <UserContext.Provider
-          value={{user, saveUser: (name: string) => setUser({name})}}>
-          <Stack.Navigator>
-            {user.name ? (
-              <>
-                <Stack.Screen name={'Home'} component={Home} />
-                <Stack.Screen name={'Question4'} component={Question4} />
-                <Stack.Screen name={'Question1'} component={Question1} />
-                <Stack.Screen name={'Question2'} component={Question2} />
-                <Stack.Screen name={'Question3'} component={Question3} />
-                <Stack.Screen
-                  name={'QuestionResult'}
-                  component={QuestionResult}
-                />
-              </>
-            ) : (
-              <Stack.Screen name={'Login'} component={Login} />
-            )}
-          </Stack.Navigator>
-        </UserContext.Provider>
-      </AnswerContext.Provider>
+      <Provider store={stores}>
+        <AnswerContext.Provider value={{answers, saveAnswer}}>
+          <UserContext.Provider
+            value={{user, saveUser: (name: string) => setUser({name})}}>
+            <Stack.Navigator>
+              {user.name ? (
+                <>
+                  <Stack.Screen name={'Home'} component={Home} />
+                  <Stack.Screen name={'Question4'} component={Question4} />
+                  <Stack.Screen name={'Question1'} component={Question1} />
+                  <Stack.Screen name={'Question2'} component={Question2} />
+                  <Stack.Screen name={'Question3'} component={Question3} />
+                  <Stack.Screen
+                    name={'QuestionResult'}
+                    component={QuestionResult}
+                  />
+                </>
+              ) : (
+                <Stack.Screen name={'Login'} component={Login} />
+              )}
+            </Stack.Navigator>
+          </UserContext.Provider>
+        </AnswerContext.Provider>
+      </Provider>
     </NavigationContainer>
   );
 };

@@ -1,24 +1,30 @@
 import React from 'react';
 import CustomTextInput from '../components/CustomTextInput';
 import QuestionTemple from '../components/QuestionTemple';
-import {AnswerContext} from '../Navigation';
+import {connect} from 'react-redux';
+import {answerQuestion} from '../redux/actions/answerAction';
 
-const Question1 = () => {
+const Question1 = ({
+  store,
+  answerQuestion,
+}: {
+  store: any;
+  answerQuestion: (key: string, val: string) => void;
+}) => {
+  console.log(store);
   return (
-    <AnswerContext.Consumer>
-      {value => {
-        return (
-          <QuestionTemple nextScreen={'Question2'}>
-            <CustomTextInput
-              title={'Câu 1: 1 + 1 = ?'}
-              changeText={(val: string) => value.saveAnswer('answer1', val)}
-              value={value.answers.answer1}
-            />
-          </QuestionTemple>
-        );
-      }}
-    </AnswerContext.Consumer>
+    <QuestionTemple nextScreen={'Question2'}>
+      <CustomTextInput
+        title={'Câu 1: 1 + 1 = ?'}
+        changeText={(val: string) => answerQuestion('answer1', val)}
+        value={store.answers.answer1}
+      />
+    </QuestionTemple>
   );
 };
 
-export default React.memo(Question1);
+const mapStateToProps = (store: any) => {
+  return {store};
+};
+
+export default connect(mapStateToProps, {answerQuestion})(Question1);
