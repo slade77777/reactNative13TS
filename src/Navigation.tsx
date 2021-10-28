@@ -11,6 +11,7 @@ import Login from './screens/Login';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Provider} from 'react-redux';
 import stores from './redux/store';
+import CreatePost from './screens/CreatePost';
 
 const Stack = createNativeStackNavigator();
 const initialAnswers = {
@@ -55,6 +56,7 @@ const Navigation = () => {
                   <Stack.Screen name={'Question1'} component={Question1} />
                   <Stack.Screen name={'Question2'} component={Question2} />
                   <Stack.Screen name={'Question3'} component={Question3} />
+                  <Stack.Screen name={'CreatePost'} component={CreatePost} />
                   <Stack.Screen
                     name={'QuestionResult'}
                     component={QuestionResult}

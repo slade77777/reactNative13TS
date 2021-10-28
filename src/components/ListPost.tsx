@@ -1,51 +1,7 @@
 import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React, {useState} from 'react';
-import CustomTextInput from './CustomTextInput';
-
-const Data = [
-  {
-    icon: 'a',
-    title: 'title 1',
-    content: 'bước 1 aaaaaaaaaaaaaaaaaaaaa',
-    date: '2021/04/04',
-    read: true,
-  },
-  {
-    icon: 'b',
-    title: 'title 22',
-    content: 'bước 2 aaaaaaaaaaaaaaaaaaaaa',
-    date: '2021/04/05',
-    read: false,
-  },
-  {
-    icon: 'c',
-    title: 'title 3333',
-    content: 'bước 3 aaaaaaaaaaaaaaaaaaaaa',
-    date: '2021/04/06',
-    read: true,
-  },
-  {
-    icon: 'd',
-    title: 'title 22 asdasdasd',
-    content: 'bước 4 aaaaaaaaaaaaaaaaaaaaa',
-    date: '2021/04/07',
-    read: true,
-  },
-  {
-    icon: 'e',
-    title: 'title 5',
-    content: 'bước 5 aaaaaaaaaaaaaaaaaaaaa',
-    date: '2021/04/08',
-    read: false,
-  },
-  {
-    icon: 'f',
-    title: 'title 5.1',
-    content: 'bước 6 aaaaaaaaaaaaaaaaaaaaa',
-    date: '2021/04/09',
-    read: false,
-  },
-];
+import React from 'react';
+import {useNavigation} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
 
 type ItemType = {
   icon: string;
@@ -75,16 +31,9 @@ const Item = ({item}: {item: ItemType}) => (
 );
 
 const ListPost = () => {
-  const [searchText, setSearchText] = useState('');
-  const [listData, setListData] = useState<Array<ItemType>>([]);
-
-  function searchRecords(searchText: string) {
-    setSearchText(searchText);
-    const filteredData = Data.filter(item =>
-      item.title.toLowerCase().includes(searchText.toLowerCase()),
-    );
-    setListData(filteredData);
-  }
+  const Data = useSelector(state => state.posts);
+  console.log(Data);
+  const navigation = useNavigation();
 
   const renderItem = ({item}: {item: ItemType}) => {
     return <Item item={item} />;
@@ -92,12 +41,13 @@ const ListPost = () => {
 
   return (
     <>
-      {/*<CustomTextInput*/}
-      {/*  title={'tìm kiếm:'}*/}
-      {/*  changeText={(val: string) => searchRecords(val)}*/}
-      {/*/>*/}
+      <TouchableOpacity
+        onPress={() => navigation.navigate('CreatePost')}
+        style={{padding: 20, borderWidth: 1, margin: 10, borderColor: 'blue'}}>
+        <Text>Tạo mới</Text>
+      </TouchableOpacity>
       <FlatList
-        data={searchText ? listData : Data}
+        data={Data}
         renderItem={renderItem}
         keyExtractor={item => item.date}
       />
